@@ -9,7 +9,7 @@ import { Employee } from '../types/Employee';
 })
 export class LearnTableComponent implements OnInit {
 
-  dati = [
+  dati: Employee[] = [
     {
       "id": 10001,
       "birthDate": "1953-09-01",
@@ -64,9 +64,22 @@ export class LearnTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  elimina = (index: number) => {
+    this.dati.splice(index, 1);
+  } 
+
   modifica = (el : Employee) => {
-    console.log(el);
     this.elMod = el;
+  }
+
+
+  aggiungi = () => {
+    this.elMod = new Employee();
+    this.dati.push(this.elMod);
+  }
+
+  closeEdit =() => {
+    this.elMod = null;
   }
 
 }
